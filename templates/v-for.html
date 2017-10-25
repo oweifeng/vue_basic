@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常用指令 v-model</title>
+    <script src="/vue_basic/static/js/vue.js"></script>
+    <script>
+        window.onload=function(){
+            var vm=new Vue({
+               el:'#app',//如果关联class则写'.app', 如果关联到div,p标签都可以, 但不可以关联到body,html标签
+                data:{
+                   name:'alice',
+                    age:13, //可支持整形
+                    nums:[13,45,56], //可支持数组
+                    single:true, //可支持布尔值
+                    boyfriend:{name:'bruce',age:15}  //可支持对象
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="app"> //如果是class则写class="app"
+        用户名: <input type="text" v-model="name">  //v-model起到绑定的作用
+        <br>
+        {{ name }}<br>
+        {{ age }}<br>
+        {{ nums }}<br>
+        {{ single }}<br>
+        {{ boyfriend }}
+    </div>
+</body>
+</html>
