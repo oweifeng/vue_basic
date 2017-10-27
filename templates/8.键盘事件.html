@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡与默认行为</title>
+    <script src="/vue_basic/static/js/vue.js"></script>
+    <script>
+        //自定义键位别名
+        Vue.config.keyCodes={
+          a:65
+        };
+        window.onload=function(){
+            var vm=new Vue({
+               el:'#app',
+                data:{
+
+                },
+                methods:{
+                   show1:function (e) {
+                       console.log(e.keyCode);
+                   },
+                    show2:function () {
+                        console.log("按了回车")
+                    },
+                    show3:function () {
+                        console.log("按了a")
+                    }
+                    }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <!--键盘事件:@keydown,@keypress,@keyup-->
+        原生js方法按任意键: <input type="text" @keydown="show1($event)">  <!--原生js方法-->
+        <br>
+        keydown.enter: <input type="text" @keydown.enter="show2()">  <!--enter代表回车键-->
+        <br>
+        keydown.13: <input type="text" @keydown.13="show2()">  <!--用enter键的ASC码代表-->
+        <br>
+        keydown.a: <input type="text" @keydown.a="show3()">  <!--自定义a按键的别名-->
+    </div>
+</body>
+</html>

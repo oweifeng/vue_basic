@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件简写与事件对象$event</title>
+    <script src="/vue_basic/static/js/vue.js"></script>
+    <script>
+        window.onload=function(){
+            var vm=new Vue({
+               el:'#app',
+                data:{
+
+                },
+                methods:{
+                   show:function () {
+                       console.log('show方法');
+                   },
+                    print:function (e) {
+                        console.log(e.target.innerHTML);
+                    }
+                    }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <!--v-on的简写方式是"@"-->
+        <button @click="show()">点我</button>
+        <br>
+        <hr>
+        <!--时间对象$event包含事件相关信息,可以在console中查看事件对象本身-->
+        <button @click="print($event)">鼠标点击时在console记录事件本身</button>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常用指令 v-for</title>
+    <script src="/vue_basic/static/js/vue.js"></script>
+    <script>
+        window.onload=function(){
+            var vm=new Vue({
+               el:'#app',//如果关联class则写'.app', 如果关联到div,p标签都可以, 但不可以关联到body,html标签
+                data:{
+                    nums:[13,45,56], //可支持数组
+                    boyfriend:{name:'bruce',age:15},  //可支持对象
+                    boyfriends:[
+                        {name:'bruce',age:15},
+                        {name:'will',age:25},
+                        {name:'Ron',age:45}
+                    ]
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="num in nums">{{ num }}</li>
+        </ul>
+        <ul>
+            <li v-for="(value,key) in boyfriend">{{ key }}={{ value }}</li>
+            <!--注意循环key,value时, 先value后key-->
+        </ul>
+        <ul>
+            <li v-for="boy in boyfriends">
+                {{ boy.name }},{{ boy.age }}
+            </li>
+            <!--循环的单元是对象时,可以访问对象的属性-->
+        </ul>
+        <ul>
+            <li v-for="(boy,index) in boyfriends">
+                {{ index+1 }},{{ boy.name }},{{ boy.age }}
+            </li>
+            <!--循环的单元是对象时,可以访问对象的属性-->
+            <!--可以访问数组的index,默认从0开始,同样写在后面-->
+        </ul>
+    </div>
+</body>
+</html>

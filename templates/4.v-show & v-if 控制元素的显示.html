@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常用指令 v-show & v-if</title>
+    <script src="/vue_basic/static/js/vue.js"></script>
+    <script>
+        window.onload=function(){
+            var vm=new Vue({
+               el:'#app',
+                data:{
+                    flag:true
+                },
+                methods:{
+                    hide:function () {
+                        this.flag=1-this.flag
+                    }
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="hide()">隐藏方法一</button>
+        <button v-on:click="flag=1-flag">隐藏方法二</button>
+        <button v-on:click="flag=!flag">隐藏方法三</button>
+        <hr>
+        <div style="width:130px;heitht:100px;background-color: yellow" v-show="flag">欢迎来到黄光部1</div>
+        <hr>
+        <div style="width:130px;heitht:100px;background-color: yellow" v-if="flag">欢迎来到黄光部2</div>
+        <!--v-if是删除该标签内容,然后再还原-->
+    </div>
+</body>
+</html>

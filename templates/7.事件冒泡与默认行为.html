@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件冒泡与默认行为</title>
+    <script src="/vue_basic/static/js/vue.js"></script>
+    <script>
+        window.onload=function(){
+            var vm=new Vue({
+               el:'#app',
+                data:{
+
+                },
+                methods:{
+                   show:function () {
+                       console.log('show');
+                   },
+                    print:function () {
+                        console.log('print');
+                    },
+                    write:function () {
+                        console.log('write')
+                    },
+                    study:function () {
+                        console.log('study')
+                    }
+                    }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="app">
+        <div @click="write">
+            <p @click="print">
+                <button @click="show">不阻止冒泡</button> <!--每一层都含有click事件响应,触动了底层的click,事件会往上传递到上层, 如冒泡般.-->
+                <button @click.stop="show">阻止冒泡</button> <!--".stop"相当于调用event.stopPropagation()-->
+            </p>
+        </div>
+        <hr>
+
+        <a href="#####" @click="study">不阻止默认行为</a>  <!--默认行为是在链接后添加href的内容-->
+        <a href="#####" @click.prevent="study">阻止默认行为</a>
+    </div>
+</body>
+</html>
